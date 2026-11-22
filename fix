@@ -1,0 +1,58 @@
+getgenv().AutoReload         = true          -- Tự động thay lưỡi kiếm / nạp đạn
+getgenv().AutoSlot           = true          -- Tự động chọn Slot và vào Lobby
+getgenv().SelectedSlot       = "A"           -- Slot muốn chọn ("A", "B", hoặc "C")
+getgenv().SoloOnly           = false         -- Tự thoát về Lobby nếu có người chơi khác vào phòng
+
+-- [Webhook & Bảo vệ]
+getgenv().RewardWebhook      = true          -- Gửi thông báo phần thưởng qua Discord Webhook
+getgenv().WebhookUrl         = ""            -- Dán link Discord Webhook của bạn vào đây
+getgenv().ShadowbanThreshold = 10            -- Cảnh báo nếu số trận liên tiếp không rơi đồ đạt mức này
+
+-- [Mission - Tự động tạo & vào trận]
+getgenv().AutoMission        = false         -- Tự động tạo phòng và bắt đầu nhiệm vụ
+getgenv().MissionType        = "Missions"    -- Loại trận: "Missions", "Raids", hoặc "Waves"
+getgenv().MissionMap         = "Shiganshina" -- Tên bản đồ: "Shiganshina", "Trost", "Stohess", "Colossal"...
+getgenv().MissionObjective   = "Breach"      -- Mục tiêu: "Breach", "Stall", "Skirmish", "Guard"...
+getgenv().MissionDifficulty  = "Hardest"     -- Độ khó: "Hardest" (Tự tìm khó nhất), "Aberrant", "Severe", "Hard", "Normal", "Easy"
+getgenv().MissionModifiers   = {             -- Các Modifier (đổi thành true để bật)
+    -- ["No_Perks"] = false,
+    -- ["No_Skills"] = false,
+}
+getgenv().WaitBeforeStart    = true          -- Chờ một khoảng thời gian trước khi bấm Start
+getgenv().WaitBeforeStartSecs= 20            -- Số giây chờ trước khi bắt đầu trận
+
+-- [Lobby & Retry - Sảnh & Chơi lại]
+getgenv().AutoUpgrade        = false         -- Tự động nâng cấp trang bị khi ở Lobby
+getgenv().AutoRetry          = true          -- Tự động bấm chơi lại (Retry) khi xong trận
+getgenv().ReturnLobbyAtGames = false         -- Tự quay về Lobby sau khi cày đủ số trận nhất định
+getgenv().MaxGamesBeforeLobby= 10            -- Số trận tối đa trước khi quay về Lobby
+
+-- [Auto Farm - Cày Titan]
+getgenv().AutoFarm           = true          -- Bật/Tắt Auto Farm Titan
+getgenv().AutoFarmConfig     = {
+    ReloadCooldown = 1,                      -- Thời gian hồi giữa các lần thay kiếm (giây)
+    AttackCooldown = 0.15,                   -- Tốc độ đánh (giây)
+    AttackRange    = 80,                     -- Khoảng cách tấn công tối đa
+    HeightOffset   = 5,                      -- Độ cao bay lơ lửng so với Titan
+    MovementMode   = "Hover",                -- Kiểu di chuyển: "Hover" (Bay mượt) hoặc "Teleport" (Dịch chuyển)
+    MoveSpeed      = 300,                    -- Tốc độ bay (chỉ áp dụng cho chế độ Hover)
+}
+
+-- [Multi-Hit - Đánh đa mục tiêu]
+getgenv().MultiHit           = false         -- Bật/Tắt chém nhiều Titan cùng lúc
+getgenv().MultiHitCount      = 3             -- Số lượng Titan tối đa trúng đòn cùng lúc
+
+-- [Mastery & Streak - Cày thông thạo & Chuỗi thắng]
+getgenv().MasteryFarmConfig  = {
+    Enabled = false,                         -- Bật/Tắt tự hóa Titan để cày Mastery
+    Mode    = "Both",                        -- Chế độ: "Punching" hoặc "Both"
+}
+getgenv().DieAtStreak        = false         -- Tự sát để reset khi đạt chuỗi (Streak) nhất định
+getgenv().DieAtStreakCount   = 10000         -- Mức Streak sẽ tự reset
+
+-- [Last Titan - Chờ Titan cuối]
+getgenv().LastTitanWait      = false         -- Chờ đủ thời gian rồi mới giết con Titan cuối cùng (tránh bị tính là farm quá nhanh)
+getgenv().LastTitanWaitSecs  = 60            -- Tổng thời gian tối thiểu của 1 trận (giây)
+
+script_key="72e0c0f5-824b-4cd6-9792-bfa77dc4f7a7";
+loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/5b087e725fc5664d59394ec816e3d7449047c71744dc384ed17e81f624f5365a/download"))()
